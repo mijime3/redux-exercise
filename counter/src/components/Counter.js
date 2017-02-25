@@ -43,4 +43,5 @@ class Counter extends Component {
   }
 }
 
+// `import XXX from 'Counter.js'` としたとき、XXX に Counter が入る
 export default Counter;
