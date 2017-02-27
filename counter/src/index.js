@@ -10,6 +10,7 @@ import Counter from './components/Counter';
 import counter from './reducers';
 
 // * JSはステートメント末尾にセミコロンがなくても動作する（ASIという機能で、自動的に補完される）
+// reducer(ここでは counter = ./reducers/index.js で default export された function)を指定して、reduxのstoreを作成
 const store = createStore(counter)
 const rootEl = document.getElementById('root');
 
@@ -17,7 +18,11 @@ const rootEl = document.getElementById('root');
 // `ReactDOM.render()` には、JSXとcontainer(DOM node)を渡す
 const render = () => ReactDOM.render(
   <Counter
+    // JSXでは `{}` で囲まれた部分は JS として処理される
+    // component の props.value に store の state をセット（このサンプルでは state は単一の数値）
     value={store.getState()}
+    // component の props.onIncrement に 'INCREMENT' action を store に dispatch する function をセット
+    // dispatch された action は reducer に渡される
     onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
     onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
   />,
