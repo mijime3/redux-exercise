@@ -11,6 +11,8 @@ import counter from './reducers';
 
 // * JSはステートメント末尾にセミコロンがなくても動作する（ASIという機能で、自動的に補完される）
 // reducer(ここでは counter = ./reducers/index.js で default export された function)を指定して、reduxのstoreを作成
+// 第2引数に初期ステートを渡すことも可能
+// store はアプリケーションに１つだけ
 const store = createStore(counter)
 const rootEl = document.getElementById('root');
 
@@ -30,4 +32,5 @@ const render = () => ReactDOM.render(
 );
 
 render();
+// store の state が更新される度に subscribe に指定した function が実行される
 store.subscribe(render);
