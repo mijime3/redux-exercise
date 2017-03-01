@@ -5,7 +5,7 @@ class Counter extends Component {
 
   // prop のバリデーション
   // エラーがある場合は、コンソールにwarningとして出力される
-  // ただし、productionモードではチェックチェックされない（？）
+  // ただし、productionモードではチェックされない（？）
   static propTypes = {
     value: PropTypes.number.isRequired,
     onIncrement: PropTypes.func.isRequired,
@@ -21,8 +21,11 @@ class Counter extends Component {
   incrementAsync = () => {
     setTimeout(this.props.onIncrement, 1000)
   };
-  
+
+  // `render()` では、単一の子要素を返すこと　兄弟要素を含む要素を返すとエラーになる（ `<p></p><p></p>` はエラー）
   render() {
+    // `const` は ES6 の構文で immutable な変数を定義する
+    // `{ hoge, fuga } = {hoge:1 fuga:2}` は分割代入　`{ hoge:foo, fuga:bar } = {hoge:1 fuga:2}` として、別名の変数で受け取ることも可能
     const { value, onIncrement, onDecrement } = this.props;
     return (
       <p>
