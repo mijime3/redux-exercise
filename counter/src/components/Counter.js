@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 
+// `class` はES6で導入された糖衣構文　JSはあくまで prototype ベース
 class Counter extends Component {
+
+  // prop のバリデーション
+  // エラーがある場合は、コンソールにwarningとして出力される
+  // ただし、productionモードではチェックチェックされない（？）
   static propTypes = {
     value: PropTypes.number.isRequired,
     onIncrement: PropTypes.func.isRequired,
@@ -16,7 +21,7 @@ class Counter extends Component {
   incrementAsync = () => {
     setTimeout(this.props.onIncrement, 1000)
   };
-
+  
   render() {
     const { value, onIncrement, onDecrement } = this.props;
     return (
