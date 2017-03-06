@@ -6,54 +6,62 @@ function setup(value = 0) {
   const actions = {
     onIncrement: jest.fn(),
     onDecrement: jest.fn()
-  }
+  };
   const component = shallow(
     <Counter value={value} {...actions} />
-  )
+  );
   
   return {
     component: component,
     actions: actions,
     buttons: component.find('button'),
     p: component.find('p')
-  }
+  };
 }
 
+// `create-react-app` を使ってプロジェクトを作成すると、テストの仕組みは `react-scripts` によって提供される
+// `react-scripts` では、テスティングフレームワークは `Jest` が使われている
+// `Jest` は、内部的には `Jasmine` というテスティングフレームワークを採用している
+// `describe()` `it()` `expect()` などは `Jasmine` の機能である
+
+// `describe()` はテストのグルーピング
 describe('Counter component', () => {
+  // `it()` は1つのテスト
   it('should display count', () => {
     const { p } = setup();
+    // DOMの中身を検証
     expect(p.text()).toMatch(/^Clicked: 0 times/)
-  })
+  });
   
   it('first button should call onIncrement', () => {
     const { buttons, actions } = setup();
     buttons.at(0).simulate('click');
     expect(actions.onIncrement).toBeCalled();
-  })
+  });
 
   it('second button should call onDecrement', () => {
     const { buttons, actions } = setup();
     buttons.at(1).simulate('click');
     expect(actions.onDecrement).toBeCalled();
-  })
+  });
 
   it('third button should be not call onIncrement if the counter is even', () => {
     const { buttons, actions } = setup(42);
     buttons.at(2).simulate('click');
     expect(actions.onIncrement).not.toBeCalled()
-  })
+  });
 
   it('third button should call onIncrement if the counter is odd', () => {
     const { buttons, actions } = setup(43);
     buttons.at(2).simulate('click');
     expect(actions.onIncrement).toBeCalled();
-  })
+  });
 
   it('third button should call onIncrement if the counter is odd and negative', () => {
     const { buttons, actions } = setup(-43);
     buttons.at(2).simulate('click');
     expect(actions.onIncrement).toBeCalled();
-  })
+  });
 
   it('fourth button should call onIncrement in a second', (done) => {
     const { buttons, actions } = setup();
@@ -62,5 +70,5 @@ describe('Counter component', () => {
       expect(actions.onIncrement).toBeCalled();
       done();
     }, 1000);
-  })
-})
+  });
+});
