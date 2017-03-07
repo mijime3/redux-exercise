@@ -7,13 +7,19 @@ function setup(value = 0) {
     onIncrement: jest.fn(),
     onDecrement: jest.fn()
   };
+  // `shallow` は enzyme のメソッド
+  // react のコンポーネントをレンダリングし、DOM検証のメソッドを持つオブジェクト(ShallowWrapper)を返す
+  // shallow というだけあって浅いレンダリングになっており、深い階層のコンポーネントのイベントが発火しない、などの制約がある
   const component = shallow(
+    // `...` は配列展開
+    // この場合 `<Counter value={value} onIncrement=actions.onIncrement onDecrement=actions.onDecrement />` と同様
     <Counter value={value} {...actions} />
   );
   
   return {
     component: component,
     actions: actions,
+    // ShallowWrapper は selector で走査できる
     buttons: component.find('button'),
     p: component.find('p')
   };
