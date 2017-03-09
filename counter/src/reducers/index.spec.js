@@ -1,5 +1,7 @@
 import counter from './index'
 
+// reducerのテスト
+// reducer は state と action を渡すと新しい state を返す純粋な function なので、テストはシンプル
 describe('reducers', () => {
   it('should provide the initial state', () => {
     expect(counter(undefined, {})).toBe(0);

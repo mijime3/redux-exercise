@@ -4,6 +4,7 @@ import Counter from './Counter'
 
 function setup(value = 0) {
   const actions = {
+    // `jest.fn()` は mock function の生成
     onIncrement: jest.fn(),
     onDecrement: jest.fn()
   };
@@ -41,7 +42,11 @@ describe('Counter component', () => {
   
   it('first button should call onIncrement', () => {
     const { buttons, actions } = setup();
+    // 最初のボタンのclickイベントを発火させる
+    // `simulate()` は ShallowWrapper のメソッド＝enzymeの機能
     buttons.at(0).simulate('click');
+    // actions は コンポーネントに注入したモック
+    // `toBeCalled()` は function 呼び出しのアサーション
     expect(actions.onIncrement).toBeCalled();
   });
 
@@ -69,6 +74,9 @@ describe('Counter component', () => {
     expect(actions.onIncrement).toBeCalled();
   });
 
+  // 非同期のテスト
+  // 単純にsetTimeout()するだけでは、非同期呼び出しの function が実行される前にテストが終わってしまう
+  // テストメソッドの引数で `done` callback を受け取ると `done()` の実行を待つようになる（呼び出されないとタイムアウトしてテストが失敗する）
   it('fourth button should call onIncrement in a second', (done) => {
     const { buttons, actions } = setup();
     buttons.at(3).simulate('click');

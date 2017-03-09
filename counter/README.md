@@ -9,9 +9,9 @@ https://github.com/reactjs/redux/tree/master/examples/counter
 * 不明点を調べてコメント
 * ESLint を設定
 * テスト環境セットアップ
-* テスト実装（写経）　*途中*
+* テスト実装（写経）
+* テストの不明点を調べてコメント
 
 Todo
 
-* テストの不明点を調べてコメント
 * CI回す
