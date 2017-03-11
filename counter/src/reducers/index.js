@@ -1,6 +1,6 @@
 // action と現在の state を受け取り、**新しい** state を返す
 // 受け取った state を変更してはいけない 
-export default (state = 0, action) => {
+export default (state = 0, action = {}) => {
   switch (action.type) {
     case 'INCREMENT':
       return state + 1;
