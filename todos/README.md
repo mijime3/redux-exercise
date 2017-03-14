@@ -6,9 +6,12 @@ https://github.com/reactjs/redux/tree/master/examples/todos
 
 * create project by `create-react-app`
 
-# todo
+# doing
 
 * handwriting sample code
+
+# todo
+
 * study unknown points and comment
 * setup test environment
 * handwriting sample test code
