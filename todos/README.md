@@ -5,10 +5,10 @@ https://github.com/reactjs/redux/tree/master/examples/todos
 # done
 
 * create project by `create-react-app`
+* handwriting sample code
 
 # doing
 
-* handwriting sample code
 
 # todo
 
