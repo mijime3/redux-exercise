@@ -9,10 +9,10 @@ https://github.com/reactjs/redux/tree/master/examples/todos
 
 # doing
 
+* study unknown points and comment
 
 # todo
 
-* study unknown points and comment
 * setup test environment
 * handwriting sample test code
 * study unknown points of test and comment
